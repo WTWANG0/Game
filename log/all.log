@@ -70,3 +70,18 @@ java.io.IOException: 你的主机中的软件中止了一个已建立的连接�
 	at java.base/java.lang.Thread.run(Thread.java:834)
 [13:52:24,283] [INFO] ServerMain.main --> 服务器启动成功!
 [14:12:50,927] [INFO] ServerMain.main --> 服务器启动成功!
+[14:34:09,786] [INFO] ServerMain.main --> 服务器启动成功!
+[15:01:57,456] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserDieResult <==> 12
+[15:01:57,461] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserSubtractHpResult <==> 11
+[15:01:57,467] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserAttkResult <==> 10
+[15:01:57,470] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserAttkCmd <==> 9
+[15:01:57,473] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserStopResult <==> 8
+[15:01:57,476] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserStopCmd <==> 7
+[15:01:57,479] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserQuitResult <==> 6
+[15:01:57,486] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserMoveToResult <==> 5
+[15:01:57,488] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserMoveToCmd <==> 4
+[15:01:57,492] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$WhoElseIsHereResult <==> 3
+[15:01:57,494] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$WhoElseIsHereCmd <==> 2
+[15:01:57,501] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserEntryResult <==> 1
+[15:01:57,504] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserEntryCmd <==> 0
+[15:02:02,311] [INFO] ServerMain.main --> 服务器启动成功!

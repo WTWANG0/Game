@@ -25,15 +25,47 @@ public final class GameMsgRecognizer {
 
     //init
     public static void init() {
-        //解码
-        _msgCodeAndMsgBodyMap.put(GameMsgProtocol.MsgCode.USER_ENTRY_CMD_VALUE, GameMsgProtocol.UserEntryCmd.getDefaultInstance());
-        _msgCodeAndMsgBodyMap.put(GameMsgProtocol.MsgCode.WHO_ELSE_IS_HERE_CMD_VALUE, GameMsgProtocol.WhoElseIsHereCmd.getDefaultInstance());
-        _msgCodeAndMsgBodyMap.put(GameMsgProtocol.MsgCode.USER_MOVE_TO_CMD_VALUE, GameMsgProtocol.UserMoveToCmd.getDefaultInstance());
-        //加码
-        _msgClazzAndMsgCodeMap.put(GameMsgProtocol.UserEntryResult.class,GameMsgProtocol.MsgCode.USER_ENTRY_RESULT_VALUE);
-        _msgClazzAndMsgCodeMap.put(GameMsgProtocol.WhoElseIsHereResult.class,GameMsgProtocol.MsgCode.WHO_ELSE_IS_HERE_RESULT_VALUE);
-        _msgClazzAndMsgCodeMap.put(GameMsgProtocol.UserMoveToResult.class,GameMsgProtocol.MsgCode.USER_MOVE_TO_RESULT_VALUE);
-        _msgClazzAndMsgCodeMap.put(GameMsgProtocol.UserQuitResult.class,GameMsgProtocol.MsgCode.USER_QUIT_RESULT_VALUE);
+        //拿到GameMsgProtocol下面的所有内部类
+        Class<?>[] innerClazzArray = GameMsgProtocol.class.getDeclaredClasses();
+        for (Class<?> innerClazz : innerClazzArray) {
+            //判断是否是GeneratedMessageV3类型
+            if (!GeneratedMessageV3.class.isAssignableFrom(innerClazz)) {
+                continue;
+            }
+            //转换类名格式
+            String clazzName = innerClazz.getSimpleName();
+            clazzName = clazzName.toLowerCase();
+
+            //
+            for (GameMsgProtocol.MsgCode msgCode : GameMsgProtocol.MsgCode.values()) {
+                String strMsgCode = msgCode.name();
+                strMsgCode = strMsgCode.replaceAll("_", "");    //去掉下划线,空格
+                strMsgCode = strMsgCode.toLowerCase();          //转换成小写
+
+                if (!strMsgCode.startsWith(clazzName)) {
+                    continue;
+                }
+
+                //
+                try {
+                    //反射
+                    Object returnObj = innerClazz.getDeclaredMethod("getDefaultInstance").invoke(innerClazz);
+                    LOGGER.info("{} <==> {}", innerClazz.getName(), msgCode.getNumber());
+
+                    _msgCodeAndMsgBodyMap.put(
+                            msgCode.getNumber(),
+                            (GeneratedMessageV3) returnObj
+                    );
+
+                    _msgClazzAndMsgCodeMap.put(
+                            innerClazz,
+                            msgCode.getNumber()
+                    );
+                } catch (Exception ex) {
+                    LOGGER.error(ex.getMessage(), ex);
+                }
+            }
+        }
     }
 
     //解码：根据消息编号获取构建者
