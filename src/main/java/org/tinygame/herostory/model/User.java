@@ -1,4 +1,4 @@
-package org.tinygame.herostory;
+package org.tinygame.herostory.model;
 
 //用户
 public class User {
