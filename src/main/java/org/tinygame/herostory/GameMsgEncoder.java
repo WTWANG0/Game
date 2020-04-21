@@ -8,7 +8,13 @@ import io.netty.channel.ChannelPromise;
 import io.netty.handler.codec.http.websocketx.BinaryWebSocketFrame;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.tinygame.herostory.cmdHandler.UserEntryCmdHandler;
+import org.tinygame.herostory.cmdHandler.UserMoveToCmdHandler;
+import org.tinygame.herostory.cmdHandler.WhoElseIsHereCmdHandler;
 import org.tinygame.herostory.msg.GameMsgProtocol;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /*
 * 消息编码
@@ -16,6 +22,7 @@ import org.tinygame.herostory.msg.GameMsgProtocol;
 public class GameMsgEncoder extends ChannelOutboundHandlerAdapter {
     //日志对象
     static private final Logger LOGGER = LoggerFactory.getLogger(GameMsgEncoder.class);
+
 
     //
     @Override
@@ -25,7 +32,7 @@ public class GameMsgEncoder extends ChannelOutboundHandlerAdapter {
             return;
         }
 
-        int msgCode =GameMsgRecognizer.getMsgCodeByMsgClazz(msg);
+        int msgCode =GameMsgRecognizer.getMsgCodeByMsgClazz(msg.getClass());
         if(msgCode <= -1){
             LOGGER.error("无法识别的消息, msgClazz = {}", msg.getClass().getName());
             return;
