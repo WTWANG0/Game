@@ -11,8 +11,6 @@ public final class AsyncOperationProcessor {
 
     static private final Logger LOGGER = LoggerFactory.getLogger(AsyncOperationProcessor.class);
 
-    private AsyncOperationProcessor(){}
-
     //单例
     private static  final AsyncOperationProcessor _instance = new AsyncOperationProcessor();
 
@@ -21,27 +19,38 @@ public final class AsyncOperationProcessor {
         return _instance;
     }
 
-    //
-    private final ExecutorService _es = Executors.newSingleThreadExecutor((newRunnable) -> {
-        Thread newThread = new Thread(newRunnable);
-        newThread.setName("AsyncOperationProcessor");
-        return newThread;
-    });
+    //线程数组
+    private final ExecutorService[] _esArray = new ExecutorService[8];
+
+    //私有化类默认构造器
+    private AsyncOperationProcessor() {
+        for (int i = 0; i < _esArray.length; i++) {
+            // 线程名称
+            final String threadName = "AsyncOperationProcessor_" + i;
+            // 创建单线程服务
+            _esArray[i] = Executors.newSingleThreadExecutor((newRunnable) -> {
+                Thread newThread = new Thread(newRunnable);
+                newThread.setName(threadName);
+                return newThread;
+            });
+        }
+    }
 
     //处理异步惭怍
-    public void process(IAsyncOperation asyOp) {
-        if (asyOp == null) return;
+    public void process(IAsyncOperation asyncOp) {
+        if (asyncOp == null) return;
 
-        _es.submit(() -> {
+        // 根据绑定 Id 获取线程索引
+        int bindId = Math.abs(asyncOp.getBindId());
+        int esIndex = bindId % _esArray.length;
+
+        _esArray[esIndex].submit(() -> {
             try {
-                //异步执行doAsync
-                asyOp.doAsync();
+                // 执行异步操纵
+                asyncOp.doAsync();
 
-                //返回主线程执行doFinish操作
-                MainThreadProcessor.getInstance().process(() -> {
-                    asyOp.doFinish();
-                });
-
+                // 回到主消息处理器执行完成逻辑
+                MainThreadProcessor.getInstance().process(asyncOp::doFinish);
             } catch (Exception ex) {
                 LOGGER.error(ex.getMessage(), ex);
             }

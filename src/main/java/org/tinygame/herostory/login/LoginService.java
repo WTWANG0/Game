@@ -67,7 +67,7 @@ public class LoginService {
             return _userEntity;
         }
 
-        //
+        //异步执行
         @Override
         public void doAsync() {
             try (SqlSession mySqlSession = MySqlSessionFactory.openSession()) {
@@ -106,6 +106,12 @@ public class LoginService {
             } catch (Exception ex) {
                 LOGGER.error(ex.getMessage(), ex);
             }
+        }
+
+        //保证每次访问同一个对象的线程是一样的
+        @Override
+        public int getBindId() {
+            return _userName.charAt(_userName.length() - 1);
         }
     }
 
