@@ -3,14 +3,15 @@ package org.tinygame.herostory.model;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 //用户管理类
 public final class UserManager {
 
     //私有化类默认构造器
     private UserManager(){}
-    //用户字典，用来存储用户信息
-    private static final Map<Integer, User> _userMap = new HashMap<>();
+    //用户字典，用来存储用户信息：ConcurrentHashMap线程安全
+    private static final Map<Integer, User> _userMap = new ConcurrentHashMap<>();
 
     //添加用户
     public static void addUser(User newUser) {
