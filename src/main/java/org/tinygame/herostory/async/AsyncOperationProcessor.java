@@ -2,6 +2,7 @@ package org.tinygame.herostory.async;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.tinygame.herostory.MainThreadProcessor;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -28,10 +29,23 @@ public final class AsyncOperationProcessor {
     });
 
     //处理异步惭怍
-    public void process(Runnable r) {
-        if (r == null) return;
+    public void process(IAsyncOperation asyOp) {
+        if (asyOp == null) return;
 
-        _es.submit(r);
+        _es.submit(() -> {
+            try {
+                //异步执行doAsync
+                asyOp.doAsync();
+
+                //返回主线程执行doFinish操作
+                MainThreadProcessor.getInstance().process(() -> {
+                    asyOp.doFinish();
+                });
+
+            } catch (Exception ex) {
+                LOGGER.error(ex.getMessage(), ex);
+            }
+        });
     }
 
 }

@@ -14,12 +14,12 @@ public interface IAsyncOperation {
     }
 
     /**
-     * 执行异步操作
+     * 执行异步操作:IO线程处理
      */
     void doAsync();
 
     /**
-     * 执行完成逻辑
+     * 执行完成逻辑：主要线程处理
      */
     default void doFinish() {
     }
