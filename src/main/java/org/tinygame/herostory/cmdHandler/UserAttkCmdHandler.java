@@ -3,6 +3,8 @@ package org.tinygame.herostory.cmdHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.AttributeKey;
 import org.tinygame.herostory.Broadcaster;
+import org.tinygame.herostory.model.User;
+import org.tinygame.herostory.model.UserManager;
 import org.tinygame.herostory.msg.GameMsgProtocol;
 
 public class UserAttkCmdHandler implements ICmdHandler<GameMsgProtocol.UserAttkCmd> {
@@ -29,13 +31,54 @@ public class UserAttkCmdHandler implements ICmdHandler<GameMsgProtocol.UserAttkC
         GameMsgProtocol.UserAttkResult newResult = resultBuilder.build();
         Broadcaster.broadcast(newResult);
 
-        //减血操作，暂无具体的业务逻辑
-        GameMsgProtocol.UserSubtractHpResult.Builder resultBuilder2 = GameMsgProtocol.UserSubtractHpResult.newBuilder();
-        resultBuilder2.setTargetUserId(targetUserId);
-        resultBuilder2.setSubtractHp(10);
+        //减血操作
+        User targetUser = UserManager.getUserById(targetUserId);
+        if (targetUser == null) return;
 
-        GameMsgProtocol.UserSubtractHpResult newResult2 = resultBuilder2.build();
-        Broadcaster.broadcast(newResult2);
+        //
+        int subtractHp = 10;
+        targetUser.currHp = targetUser.currHp - subtractHp;
+        // 广播减血消息
+        broadcastSubtractHp(targetUserId, subtractHp);
 
+        if (targetUser.currHp <= 0) {
+            // 广播死亡消息
+            broadcastDie(targetUserId);
+        }
     }
+
+    /**
+     * 广播减血消息
+     * @param targetUserId 被攻击者 Id
+     * @param subtractHp   减血量
+     */
+    static private void broadcastSubtractHp(int targetUserId, int subtractHp) {
+        if (targetUserId <= 0 ||
+                subtractHp <= 0) {
+            return;
+        }
+
+        GameMsgProtocol.UserSubtractHpResult.Builder resultBuilder = GameMsgProtocol.UserSubtractHpResult.newBuilder();
+        resultBuilder.setTargetUserId(targetUserId);
+        resultBuilder.setSubtractHp(subtractHp);
+
+        GameMsgProtocol.UserSubtractHpResult newResult = resultBuilder.build();
+        Broadcaster.broadcast(newResult);
+    }
+
+
+    //广播死亡消息
+    //targetUserId 被攻击者 Id
+    static private void broadcastDie(int targetUserId) {
+        if (targetUserId <= 0) return;
+
+        GameMsgProtocol.UserDieResult.Builder resultBuilder = GameMsgProtocol.UserDieResult.newBuilder();
+        resultBuilder.setTargetUserId(targetUserId);
+
+        GameMsgProtocol.UserDieResult newResult = resultBuilder.build();
+        Broadcaster.broadcast(newResult);
+    }
+
+
+
 }
