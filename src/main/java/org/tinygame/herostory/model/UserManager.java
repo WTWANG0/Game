@@ -28,4 +28,9 @@ public final class UserManager {
     public static Collection<User> listUser() {
         return _userMap.values();
     }
+
+    //根据id获取用户信息
+    public static User getUserById(int userId) {
+        return _userMap.get(userId);
+    }
 }

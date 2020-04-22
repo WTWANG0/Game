@@ -2,26 +2,52 @@ package org.tinygame.herostory.cmdHandler;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.AttributeKey;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.tinygame.herostory.Broadcaster;
+import org.tinygame.herostory.model.MoveState;
+import org.tinygame.herostory.model.User;
+import org.tinygame.herostory.model.UserManager;
 import org.tinygame.herostory.msg.GameMsgProtocol;
 
 //用户移动指令处理器
 public class UserMoveToCmdHandler implements ICmdHandler<GameMsgProtocol.UserMoveToCmd> {
-    public void handle(ChannelHandlerContext ctx, GameMsgProtocol.UserMoveToCmd msg) {
+
+    static private final Logger LOGGER = LoggerFactory.getLogger(UserMoveToCmdHandler.class);
+
+    public void handle(ChannelHandlerContext ctx, GameMsgProtocol.UserMoveToCmd cmd) {
+        //
+        if (ctx == null || cmd == null) return;
+
         //从channel上取到用户id
-        Integer userId = (Integer)ctx.channel().attr(AttributeKey.valueOf("userId")).get();
-        if(userId == null)
-        {
+        Integer userId = (Integer) ctx.channel().attr(AttributeKey.valueOf("userId")).get();
+        if (userId == null) return;
+
+        //获取移动用户
+        User moveUser = UserManager.getUserById(userId);
+        if (moveUser == null) {
+            LOGGER.error("未找到用户, userId = {}", userId);
             return;
         }
 
+        // 获取移动状态
+        MoveState mvState = moveUser.moveState;
+        // 设置位置和开始时间
+        mvState.fromPosX = cmd.getMoveFromPosX();
+        mvState.fromPosY = cmd.getMoveFromPosY();
+        mvState.toPosX = cmd.getMoveToPosX();
+        mvState.toPosY = cmd.getMoveToPosY();
+        mvState.startTime = System.currentTimeMillis();
+
 
         //赋值
-        GameMsgProtocol.UserMoveToCmd cmd = (GameMsgProtocol.UserMoveToCmd)msg;
         GameMsgProtocol.UserMoveToResult.Builder resultBuilder = GameMsgProtocol.UserMoveToResult.newBuilder();
         resultBuilder.setMoveUserId(userId);
-        resultBuilder.setMoveToPosX(cmd.getMoveToPosY());
-        resultBuilder.setMoveToPosY(cmd.getMoveToPosY());
+        resultBuilder.setMoveFromPosX(mvState.fromPosX);
+        resultBuilder.setMoveFromPosY(mvState.fromPosY);
+        resultBuilder.setMoveToPosX(mvState.toPosX);
+        resultBuilder.setMoveToPosY(mvState.toPosY);
+        resultBuilder.setMoveStartTime(mvState.startTime);
 
         //
         GameMsgProtocol.UserMoveToResult newResult = resultBuilder.build();

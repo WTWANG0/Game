@@ -1,124 +1,20 @@
-[10:15:50,386] [INFO] ServerMain.main --> 服务器启动成功!
-[11:09:35,460] [INFO] ServerMain.main --> 服务器启动成功!
-[11:19:57,558] [INFO] ServerMain.main --> 服务器启动成功!
-[12:17:57,739] [INFO] ServerMain.main --> 服务器启动成功!
-[12:27:59,343] [INFO] ServerMain.main --> 服务器启动成功!
-[12:34:10,324] [INFO] ServerMain.main --> 服务器启动成功!
-[13:10:18,016] [INFO] ServerMain.main --> 服务器启动成功!
-[13:10:18,706] [WARN] DefaultChannelPipeline.onUnhandledInboundException --> An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
-java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
-	at java.base/sun.nio.ch.SocketDispatcher.read0(Native Method)
-	at java.base/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
-	at java.base/sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:276)
-	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:233)
-	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:223)
-	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:358)
-	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:247)
-	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1147)
-	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350)
-	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:148)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:700)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:635)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:552)
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:514)
-	at io.netty.util.concurrent.SingleThreadEventExecutor$6.run(SingleThreadEventExecutor.java:1050)
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-[13:11:42,020] [INFO] ServerMain.main --> 服务器启动成功!
-[13:17:09,778] [INFO] ServerMain.main --> 服务器启动成功!
-[13:51:48,830] [INFO] ServerMain.main --> 服务器启动成功!
-[13:51:53,063] [WARN] DefaultChannelPipeline.onUnhandledInboundException --> An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
-java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
-	at java.base/sun.nio.ch.SocketDispatcher.read0(Native Method)
-	at java.base/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
-	at java.base/sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:276)
-	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:233)
-	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:223)
-	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:358)
-	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:247)
-	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1147)
-	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350)
-	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:148)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:700)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:635)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:552)
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:514)
-	at io.netty.util.concurrent.SingleThreadEventExecutor$6.run(SingleThreadEventExecutor.java:1050)
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-[13:51:53,065] [WARN] DefaultChannelPipeline.onUnhandledInboundException --> An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
-java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
-	at java.base/sun.nio.ch.SocketDispatcher.read0(Native Method)
-	at java.base/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
-	at java.base/sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:276)
-	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:233)
-	at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:223)
-	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:358)
-	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:247)
-	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1147)
-	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350)
-	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:148)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:700)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:635)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:552)
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:514)
-	at io.netty.util.concurrent.SingleThreadEventExecutor$6.run(SingleThreadEventExecutor.java:1050)
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-[13:52:24,283] [INFO] ServerMain.main --> 服务器启动成功!
-[14:12:50,927] [INFO] ServerMain.main --> 服务器启动成功!
-[14:34:09,786] [INFO] ServerMain.main --> 服务器启动成功!
-[15:01:57,456] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserDieResult <==> 12
-[15:01:57,461] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserSubtractHpResult <==> 11
-[15:01:57,467] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserAttkResult <==> 10
-[15:01:57,470] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserAttkCmd <==> 9
-[15:01:57,473] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserStopResult <==> 8
-[15:01:57,476] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserStopCmd <==> 7
-[15:01:57,479] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserQuitResult <==> 6
-[15:01:57,486] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserMoveToResult <==> 5
-[15:01:57,488] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserMoveToCmd <==> 4
-[15:01:57,492] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$WhoElseIsHereResult <==> 3
-[15:01:57,494] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$WhoElseIsHereCmd <==> 2
-[15:01:57,501] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserEntryResult <==> 1
-[15:01:57,504] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserEntryCmd <==> 0
-[15:02:02,311] [INFO] ServerMain.main --> 服务器启动成功!
-[18:34:26,187] [INFO] CmdHandlerFactory.init --> ==== 完成 Cmd 和 Handler 的关联 ====
-[18:34:26,327] [INFO] CmdHandlerFactory.init --> 关联 org.tinygame.herostory.msg.GameMsgProtocol$UserEntryCmd <==> org.tinygame.herostory.cmdHandler.UserEntryCmdHandler
-[18:34:26,344] [INFO] CmdHandlerFactory.init --> 关联 org.tinygame.herostory.msg.GameMsgProtocol$WhoElseIsHereCmd <==> org.tinygame.herostory.cmdHandler.WhoElseIsHereCmdHandler
-[18:34:26,378] [INFO] CmdHandlerFactory.init --> 关联 org.tinygame.herostory.msg.GameMsgProtocol$UserMoveToCmd <==> org.tinygame.herostory.cmdHandler.UserMoveToCmdHandler
-[18:34:26,618] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserDieResult <==> 12
-[18:34:26,621] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserSubtractHpResult <==> 11
-[18:34:26,624] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserAttkResult <==> 10
-[18:34:26,627] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserAttkCmd <==> 9
-[18:34:26,631] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserStopResult <==> 8
-[18:34:26,635] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserStopCmd <==> 7
-[18:34:26,639] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserQuitResult <==> 6
-[18:34:26,642] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserMoveToResult <==> 5
-[18:34:26,646] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserMoveToCmd <==> 4
-[18:34:26,658] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$WhoElseIsHereResult <==> 3
-[18:34:26,696] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$WhoElseIsHereCmd <==> 2
-[18:34:26,703] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserEntryResult <==> 1
-[18:34:26,709] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserEntryCmd <==> 0
-[18:34:29,420] [INFO] ServerMain.main --> 服务器启动成功!
-[18:52:08,886] [INFO] CmdHandlerFactory.init --> ==== 完成 Cmd 和 Handler 的关联 ====
-[18:52:09,069] [INFO] CmdHandlerFactory.init --> 关联 org.tinygame.herostory.msg.GameMsgProtocol$UserAttkCmd <==> org.tinygame.herostory.cmdHandler.UserAttkCmdHandler
-[18:52:09,086] [INFO] CmdHandlerFactory.init --> 关联 org.tinygame.herostory.msg.GameMsgProtocol$UserMoveToCmd <==> org.tinygame.herostory.cmdHandler.UserMoveToCmdHandler
-[18:52:09,098] [INFO] CmdHandlerFactory.init --> 关联 org.tinygame.herostory.msg.GameMsgProtocol$UserEntryCmd <==> org.tinygame.herostory.cmdHandler.UserEntryCmdHandler
-[18:52:09,103] [INFO] CmdHandlerFactory.init --> 关联 org.tinygame.herostory.msg.GameMsgProtocol$WhoElseIsHereCmd <==> org.tinygame.herostory.cmdHandler.WhoElseIsHereCmdHandler
-[18:52:09,277] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserDieResult <==> 12
-[18:52:09,279] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserSubtractHpResult <==> 11
-[18:52:09,301] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserAttkResult <==> 10
-[18:52:09,309] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserAttkCmd <==> 9
-[18:52:09,313] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserStopResult <==> 8
-[18:52:09,315] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserStopCmd <==> 7
-[18:52:09,317] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserQuitResult <==> 6
-[18:52:09,333] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserMoveToResult <==> 5
-[18:52:09,371] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserMoveToCmd <==> 4
-[18:52:09,377] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$WhoElseIsHereResult <==> 3
-[18:52:09,383] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$WhoElseIsHereCmd <==> 2
-[18:52:09,390] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserEntryResult <==> 1
-[18:52:09,433] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserEntryCmd <==> 0
-[18:52:13,114] [INFO] ServerMain.main --> 服务器启动成功!
+[12:30:04,428] [INFO] CmdHandlerFactory.init --> ==== 完成 Cmd 和 Handler 的关联 ====
+[12:30:04,444] [INFO] CmdHandlerFactory.init --> 关联 org.tinygame.herostory.msg.GameMsgProtocol$WhoElseIsHereCmd <==> org.tinygame.herostory.cmdHandler.WhoElseIsHereCmdHandler
+[12:30:04,444] [INFO] CmdHandlerFactory.init --> 关联 org.tinygame.herostory.msg.GameMsgProtocol$UserEntryCmd <==> org.tinygame.herostory.cmdHandler.UserEntryCmdHandler
+[12:30:04,444] [INFO] CmdHandlerFactory.init --> 关联 org.tinygame.herostory.msg.GameMsgProtocol$UserAttkCmd <==> org.tinygame.herostory.cmdHandler.UserAttkCmdHandler
+[12:30:04,444] [INFO] CmdHandlerFactory.init --> 关联 org.tinygame.herostory.msg.GameMsgProtocol$UserMoveToCmd <==> org.tinygame.herostory.cmdHandler.UserMoveToCmdHandler
+[12:30:04,534] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserDieResult <==> 12
+[12:30:04,536] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserSubtractHpResult <==> 11
+[12:30:04,538] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserAttkResult <==> 10
+[12:30:04,540] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserAttkCmd <==> 9
+[12:30:04,543] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserStopResult <==> 8
+[12:30:04,545] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserStopCmd <==> 7
+[12:30:04,547] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserQuitResult <==> 6
+[12:30:04,549] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserMoveToResult <==> 5
+[12:30:04,551] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserMoveToCmd <==> 4
+[12:30:04,554] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$WhoElseIsHereResult <==> 3
+[12:30:04,555] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$WhoElseIsHereCmd <==> 2
+[12:30:04,558] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserEntryResult <==> 1
+[12:30:04,560] [INFO] GameMsgRecognizer.init --> org.tinygame.herostory.msg.GameMsgProtocol$UserEntryCmd <==> 0
+[12:30:06,537] [INFO] ServerMain.main --> 服务器启动成功!
+[12:31:17,075] [ERROR] UserMoveToCmdHandler.handle --> 未找到用户, userId = 1
