@@ -18,6 +18,7 @@ public class ServerMain {
 
     /**
      * 日志对象
+     * protoc.exe --java_out=E:\IDEA_2020\Game\src\main\java .\GameMsgProtocol.proto
      */
     static private final Logger LOGGER = LoggerFactory.getLogger(ServerMain.class);
 
