@@ -1,8 +1,9 @@
 package org.tinygame.herostory.cmdHandler;
 
-import com.google.protobuf.GeneratedMessageV3;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.AttributeKey;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.tinygame.herostory.Broadcaster;
 import org.tinygame.herostory.model.User;
 import org.tinygame.herostory.model.UserManager;
@@ -10,31 +11,33 @@ import org.tinygame.herostory.msg.GameMsgProtocol;
 
 //用户入场指令处理器
 public class UserEntryCmdHandler implements ICmdHandler<GameMsgProtocol.UserEntryCmd> {
+
+    static private final Logger LOGGER = LoggerFactory.getLogger(UserEntryCmdHandler.class);
+
     @Override
     public void handle(ChannelHandlerContext ctx, GameMsgProtocol.UserEntryCmd msg) {
-        //从msg中拿到个人信息
-        GameMsgProtocol.UserEntryCmd cmd = (GameMsgProtocol.UserEntryCmd) msg;
-        int userId = cmd.getUserId();
-        String heroAvatar = cmd.getHeroAvatar();
+       if(ctx == null || msg == null) return;
+
+       //根据channel获取用户id
+        Integer userId = (Integer) ctx.channel().attr(AttributeKey.valueOf("userId")).get();
+        if (userId == null) return;
 
         //
+        User existUser = UserManager.getUserById(userId);
+        if (existUser == null) {
+            LOGGER.error("用户不存在, userId = {}", userId);
+            return;
+        }
+
+        // 获取英雄形象
+        String heroAvatar = existUser.heroAvatar;
+
         GameMsgProtocol.UserEntryResult.Builder resultBuilder = GameMsgProtocol.UserEntryResult.newBuilder();
         resultBuilder.setUserId(userId);
         resultBuilder.setHeroAvatar(heroAvatar);
 
-        // 将用户加入字典
-        User newUser = new User();
-        newUser.userId = userId;
-        newUser.heroAvatar = heroAvatar;
-        newUser.currHp = 100;
-        UserManager.addUser(newUser );
-
-        //将用户 Id 附着到 Channel
-        ctx.channel().attr(AttributeKey.valueOf("userId")).set(userId);
-
-        //构建结果并发送
+        // 构建结果并发送
         GameMsgProtocol.UserEntryResult newResult = resultBuilder.build();
-        //群发
         Broadcaster.broadcast(newResult);
     }
 }
