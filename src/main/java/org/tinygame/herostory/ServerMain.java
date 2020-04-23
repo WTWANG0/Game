@@ -13,6 +13,7 @@ import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tinygame.herostory.cmdHandler.CmdHandlerFactory;
+import org.tinygame.herostory.util.RedisUtil;
 
 public class ServerMain {
 
@@ -26,6 +27,8 @@ public class ServerMain {
         CmdHandlerFactory.init();
         GameMsgRecognizer.init();
         MySqlSessionFactory.init();
+        RedisUtil.init();
+
 
         EventLoopGroup bossGroup = new NioEventLoopGroup();     //负责客户端连接
         EventLoopGroup workerGroup = new NioEventLoopGroup();   //处理连接
