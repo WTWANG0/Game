@@ -16,4 +16,8 @@ public class User {
 
     //移动状态
     public final MoveState moveState = new MoveState();
+    /**
+     * 已死亡
+     */
+    public boolean died;
 }

@@ -31,7 +31,7 @@ public final class RedisUtil {
         }
 
         Jedis jedis = _jedisPool.getResource();
-        jedis.auth("root");
+       // jedis.auth("root");
 
         return jedis;
     }

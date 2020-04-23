@@ -94,5 +94,28 @@ public class RankService {
         }
     }
 
+    /**
+     * 刷新排行榜
+     *
+     * @param winnerId 赢家 Id
+     * @param loserId 输家 Id
+     */
+    public void refreshRank(int winnerId, int loserId) {
+        //操作redis
+        try (Jedis redis = RedisUtil.getJedis()) {
+            // 增加用户的胜利和失败次数
+            redis.hincrBy("User_" + winnerId, "Win", 1);
+            redis.hincrBy("User_" + loserId, "Lose", 1);
+
+            // 看看赢家总共赢了多少次?
+            String winStr = redis.hget("User_" + winnerId, "Win");
+            int winInt = Integer.parseInt(winStr);
+
+            // 修改排名数据
+            redis.zadd("Rank", winInt, String.valueOf(winnerId));
+        } catch (Exception ex) {
+            LOGGER.error(ex.getMessage(), ex);
+        }
+    }
 
 }
